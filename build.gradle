@@ -21,3 +21,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.named("jar") {
+	getArchiveBaseName().set("git-action-repository")
+}
