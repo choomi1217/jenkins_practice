@@ -48,5 +48,13 @@ ENTRYPOINT ["java","-jar","git-action-repository.jar"] //Docker 컨테이너가 
 ![깃허브 username, password 저장2](./image/git-action-secrets2.png)
 12. git commit 후
 13. github page 들어가서 git action 확인
+    - 에러가 나서 확인결과 그래들 빌드 후 생성되는 jar 파일 이름이 `git-action-repository-0.0.1-SNAPSHOT-plain.jar  jenkins_practice-0.0.1-SNAPSHOT.jar` 와 같음
+    - build.gradle 에 아래와 같이 추가
+```text
+bootJar {
+	archiveBaseName = 'git-action-repository'
+	archiveVersion = ''
+}
+```
 8. 도커 이미지 빌드
 9. 도커허브에 이미지 넣기 

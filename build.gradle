@@ -25,3 +25,8 @@ tasks.named('test') {
 tasks.named("jar") {
 	getArchiveBaseName().set("git-action-repository")
 }
+
+bootJar {
+	archiveBaseName = 'git-action-repository'
+	archiveVersion = ''
+}
