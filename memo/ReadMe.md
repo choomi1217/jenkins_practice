@@ -56,5 +56,32 @@ bootJar {
 	archiveVersion = ''
 }
 ```
-8. 도커 이미지 빌드
-9. 도커허브에 이미지 넣기 
+![와 성공](./image/docker-configuration-success1.png)
+![docker-hub 성공](./image/docker-configuration-success2.png)
+14. 도커 이미지 빌드 & 도커 이미지 생성
+    - 위 성공 이미지에서 `public view`클릭 후 아래와 같은 코드 복사
+    - 도커 명령어 실행
+```docker
+docker pull choyeongmi/git-action-repository
+```
+![docker-pull1](./image/docker-pull1.png)
+![docker-pull-success](./image/docker-pull2.png)
+15. 도커 런
+```docker
+docker run -p 8080:8080 choyeongmi/git-action-repository
+```
+![docker-pull1](./image/docker-run-success.png)
+성공한듯 보였으나 실패..
+[로컬 테스트 페이지](http://localhost:8080/welcome)
+![docker-pull1](./image/docker-run-fail.png)
+
+- 에러라고 생각되는 부분은 아래와 같고 이는 
+- **Docker 이미지가 linux/amd64 플랫폼을 위해 빌드되었지만, 호스트 시스템이 linux/arm64/v8 플랫폼이라는 것 그래서 주의 하라는 것**
+- 그래서 이걸 좀 해결해보고자 함
+- Docker 이미지를 내가 빌드하는게 아니고 git action이 빌드하기 때문에 `gradle.yml`파일에 아래 `platforms` 추가
+```text
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+```
+```yaml
+platforms: linux/arm64/v8
+```
