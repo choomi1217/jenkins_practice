@@ -46,5 +46,7 @@ ENTRYPOINT ["java","-jar","git-action-repository.jar"] //Docker 컨테이너가 
 11. 도커 username, password 저장
 ![깃허브 username, password 저장1](./image/git-action-secrets1.png)
 ![깃허브 username, password 저장2](./image/git-action-secrets2.png)
+12. git commit 후
+13. github page 들어가서 git action 확인
 8. 도커 이미지 빌드
 9. 도커허브에 이미지 넣기 
